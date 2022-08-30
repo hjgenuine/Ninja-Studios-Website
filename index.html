@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Website</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <style>
+        /* #0e062e */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+        body {
+            background-color: #0f0f0f;
+            width: 98%;
+            font-family: "Montserrat";
+        }
+
+        /* Navigation */
+        #navigation {
+            margin-left: 2%;
+            height: 10vh;
+            width: 95%;
+            font-family: 'Montserrat';
+            font-size: 1rem;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #logo {
+            display: flex;
+            justify-content: space-around
+        }
+
+        #logo img {
+            margin-right: 10px;
+            height: 10vh;
+            border-radius: 50%;
+        }
+
+        #search-bar {
+            text-align: center;
+            width: 40%;
+        }
+
+        #search-bar button {
+            padding-bottom: 3.5px;
+            font-size: 1.3rem;
+            background: none;
+            color: white;
+            border: 0px;
+            margin-right: -5px;
+            background-color: #202020;
+            outline: none;
+        }
+
+        #search-bar button i {
+            position: relative;
+            top: 1.5px;
+        }
+
+        #search-bar button:hover {
+            cursor: pointer;
+        }
+
+        #search-bar input {
+            width: 60%;
+            background: none;
+            outline: none;
+            font-family: 'Montserrat';
+            cursor: text;
+            font-size: 1rem;
+            border: 0px;
+            background-color: #202020;
+            padding: 5px 10px;
+            color: white;
+        }
+
+        #fav {
+            width: 10%;
+            text-align: center;
+        }
+
+        #fav:hover {
+            cursor: pointer;
+        }
+
+        #bell-icon {
+            font-size: 1.4rem;
+            color: rgb(255, 208, 0);
+        }
+
+        #bell-icon:hover {
+            cursor: pointer;
+        }
+
+        #profile {
+            color: white;
+            font-size: 2rem;
+        }
+
+        #profile:hover {
+            cursor: pointer;
+        }
+
+        ::-webkit-scrollbar {
+            width: 0px;
+        }
+
+        /* Main Content */
+        #main-content {
+            width: 71%;
+            margin-top: 3%;
+            margin-left: 1.5%;
+            display: inline-block;
+        }
+
+        #main-content>div {
+            margin-top: 10vh;
+        }
+
+        .heading {
+            margin-left: 10px;
+            color: white;
+            font-family: 'Montserrat';
+            font-size: 1.5rem;
+        }
+
+        /* Header-Content */
+        #header-content {
+            display: inline;
+        }
+
+        #header-content img {
+            height: 40vh;
+            position: relative;
+            box-shadow: none;
+        }
+
+        #image-1 {
+            width: 25%;
+            transition: transform 0.2s linear;
+            transform: scale(1);
+        }
+
+        #image-2 {
+            width: 50%;
+            transition: transform 0.2s linear;
+            transform: scale(1.2);
+            z-index: 1;
+        }
+
+        #image-3 {
+            width: 23%;
+            transition: transform 0.2s linear;
+            transform: scale(1);
+        }
+
+        #header-content img:hover {
+            transition: transform 0.2s linear, box-shadow 0.2s linear;
+            cursor: pointer;
+            box-shadow: 0px 0px 20px 5px black;
+            transform: scale(1.2);
+            z-index: 2;
+        }
+
+        /* Latest Releases */
+        #releases-content {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        #releases-content img {
+            height: 150px;
+            display: inline-block;
+            position: relative;
+        }
+
+        .img-container {
+            position: relative;
+        }
+
+        .img-container:hover .black-effect {
+            visibility: visible;
+        }
+
+        .black-effect {
+            display: flex;
+            visibility: hidden;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.521);
+        }
+
+        .black-effect i {
+            color: white;
+            font-size: 2rem;
+        }
+
+        .img-container:hover {
+            cursor: pointer;
+        }
+
+        #releases-content>div {
+            position: relative;
+            padding: 1rem;
+            width: 44%;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .written-content {
+            color: white;
+            font-size: 1.2rem;
+            font-family: 'Montserrat';
+            margin-left: 20px;
+            position: relative;
+        }
+
+        .side-dropdown {
+            position: absolute;
+            z-index: 2;
+            top: 20px;
+            right: 5%;
+        }
+
+        .side-dropdown label,
+        .side-dropdown input {
+            cursor: pointer;
+            color: white;
+            margin-left: 88%;
+            margin-right: 5%
+        }
+
+        .side-dropdown input {
+            display: none;
+        }
+
+        .side-dropdown .dropdown-content {
+            background: black;
+            overflow: hidden;
+            transition: height 0.2s linear, visibility 0.2s linear;
+            width: 190px;
+            height: 0px;
+            border: 2px white solid;
+            padding: 5px;
+            color: white;
+            font-size: 1.1rem;
+            font-family: 'Montserrat';
+            visibility: hidden;
+        }
+
+        #dropdown a {
+            transition: all 0.2s linear;
+            color: white;
+            text-decoration: none;
+            padding: 2px;
+        }
+
+        .dropdown-content a {
+            display: block;
+            border-bottom: 2px solid white;
+        }
+
+        #check-1:checked+.dropdown-content {
+            transition: height 0.2s linear, visibility 0.2s linear;
+            height: 115px;
+            visibility: visible;
+        }
+
+        #check-2:checked+.dropdown-content {
+            transition: height 0.2s linear, visibility 0.2s linear;
+            height: 115px;
+            visibility: visible;
+        }
+
+        #check-3:checked+.dropdown-content {
+            transition: height 0.2s linear, visibility 0.2s linear;
+            height: 115px;
+            visibility: visible;
+        }
+
+        #check-4:checked+.dropdown-content {
+            transition: height 0.2s linear, visibility 0.2s linear;
+            height: 115px;
+            visibility: visible;
+        }
+
+        #dropdown a:hover {
+            transition: all 0.2s linear;
+            background-color: white;
+            color: rgb(0, 0, 0)
+        }
+
+        /* Popular Artist */
+        #pop-art-content {
+            display: flex;
+            flex-wrap: wrap;
+            text-align: center;
+            justify-content: space-around;
+            transition: transform 0.2s linear;
+            transform: scale(1);
+        }
+
+        #pop-art-content:hover {
+            transition: transform opactiy 0.2s linear;
+            transform: scale(0.97);
+        }
+
+        #pop-art-content>div {
+            margin: 2.5px;
+        }
+
+        #pop-art-content p {
+            color: white;
+            font-family: 'Montserrat';
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        #pop-art-content img {
+            width: 150px;
+            border-radius: 50%;
+            transition: transform 0.2s linear;
+            transform: scale(1);
+            position: relative;
+        }
+
+        #pop-art-content img:hover {
+            transition: transform box-shadow 0.1s linear;
+            z-index: 1;
+            box-shadow: 0px 0px 20px 10px black;
+            cursor: pointer;
+            transform: scale(1.25);
+        }
+
+        /* Genres */
+        #genres {
+            height: 100%;
+            padding: 10px;
+            background-color: rgb(32, 32, 32);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        #genres img {
+            margin: 5px;
+            position: relative;
+            height: 120px;
+            width: 120px;
+            border-radius: 50%;
+        }
+
+        #genres img {
+            opacity: 0.5;
+            transition: transform 0.2s linear;
+            transform: scale(1);
+        }
+
+        #main-genre img {
+            opacity: 1;
+
+        }
+
+        #genres>div {
+            position: relative;
+        }
+
+        #genres p {
+            position: absolute;
+            color: white;
+            top: 24%;
+            left: 32%;
+            font-family: 'Montserrat';
+            font-size: 1.2rem;
+        }
+
+        #genres img:hover {
+            transition: transform z-index 0.2s linear;
+            transform: scale(1.2);
+            z-index: 1;
+            opacity: 1;
+            cursor: pointer;
+        }
+
+        /* Moods */
+        #moods {
+            height: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        #moods p {
+            position: absolute;
+            top: 32%;
+            left: 32%;
+            color: white;
+            font-size: 1.4rem;
+            font-family: 'Montserrat';
+        }
+
+        .moods-content {
+            margin: 5px;
+            transition: background-size 0.2s linear;
+            background-repeat: no-repeat;
+            height: 200px;
+            width: 300px;
+            position: relative;
+            background-position: center;
+            background-size: 140%;
+        }
+
+        #mood-1 {
+            background-image: url('https://i.ibb.co/47jLY7w/1.jpg');
+        }
+
+        #mood-2 {
+            background-image: url('https://i.ibb.co/FWWKw2B/2.jpg');
+        }
+
+        #mood-3 {
+            background-image: url('https://i.ibb.co/HXPjJXg/Young-couple-driving-convertible-at-sunset-on-desert-road.jpg');
+        }
+
+        .moods-content:hover {
+            transition: background-size 0.2s linear;
+            box-shadow: 0px 0px 30px 5px rgb(0, 0, 0);
+            cursor: pointer;
+            background-size: 170%;
+        }
+
+        .effect {
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.315);
+        }
+
+        /* Latest English & Hindi */
+        .latest {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .latest img {
+            height: 150px;
+            width: 150px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .detail {
+            color: white;
+            font-family: 'Montserrat';
+            margin-top: -15px;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .detail p {
+            margin-top: -15px;
+        }
+
+        .latest>div {
+            margin-top: 19px;
+            transition: transform 0.2s linear;
+            transform: scale(1);
+        }
+
+        .latest>div:hover {
+            transition: transform 0.2s linear;
+            z-index: 2;
+            box-shadow: 0px 0px 15px 0px white;
+            transform: scale(1.2);
+            cursor: pointer;
+        }
+
+        /* Queue */
+        aside {
+            width: 25%;
+            margin-left: 8px;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        #queue>div {
+            width: 100%;
+            display: flex;
+            color: white;
+            position: relative;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        .side-image img {
+            height: 9vh;
+        }
+
+        #queue p {
+            font-family: 'Montserrat';
+            font-size: 0.85rem;
+            margin-left: 10px;
+        }
+
+        #queue h3 {
+            font-family: 'Montserrat';
+            font-size: 0.85rem;
+            margin-top: 25px;
+            margin-right: 10px;
+        }
+
+        .heart-icon {
+            position: absolute;
+            top: 20%;
+            right: 5%;
+        }
+
+        .heart-icon:hover {
+            cursor: pointer;
+            color: red;
+        }
+
+        #queue>div:hover {
+            cursor: pointer;
+            box-shadow: 0px 0px 5px 2px white;
+        }
+
+        #queue-heading {
+            position: relative;
+        }
+
+        #queue-button>label,
+        #queue-button>input {
+            color: greenyellow;
+            position: absolute;
+            right: 5.65%;
+            top: 4px;
+        }
+
+        #queue-button>input {
+            display: none;
+        }
+
+        #queue-button>label:hover {
+            cursor: pointer;
+        }
+
+        #queue-dropdown-content {
+            transition: visibility 0.2s linear, height 0.2s linear;
+            overflow: hidden;
+            height: 0px;
+            visibility: hidden;
+            z-index: 1;
+            position: absolute;
+            width: 40%;
+            top: 35px;
+            border: 2px solid white;
+            background-color: black;
+            right: 6%;
+        }
+
+        #queue-dropdown-content p {
+            font-size: 1rem;
+            padding: 5px;
+            margin: 5%;
+        }
+
+        #queue-dropdown-content p:hover {
+            cursor: pointer;
+            background-color: white;
+            color: black;
+        }
+
+        #queue-button>input:checked+#queue-dropdown-content {
+            transition: visibility 0.2s linear, height 0.2s linear;
+            visibility: visible;
+            height: 100px;
+        }
+
+        /* Side */
+        aside>label,
+        aside>input {
+            position: fixed;
+            color: white;
+            font-size: 1.3rem;
+            top: 16%;
+            left: 92%;
+            display: none;
+        }
+
+        /* Music-Player */
+        .player {
+            z-index: 4;
+            padding-top: 1%;
+            font-family: 'Montserrat';
+            color: white;
+            position: fixed;
+            bottom: 0px;
+            left: 0%;
+            width: 100%;
+            background-color: rgb(41, 40, 40);
+            height: 15vh;
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+
+        .controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .details {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+        }
+
+        #written-content {
+            width: 100px;
+            margin-left: 4%;
+        }
+
+        .track-art {
+            margin-bottom: 2px;
+            height: 100px;
+            width: 100px;
+            background-image: url("https://images.pexels.com/photos/262034/pexels-photo-262034.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260");
+            background-size: cover;
+        }
+
+        .now-playing {
+            font-size: 1rem;
+        }
+
+        .track-name {
+            font-size: 1rem;
+        }
+
+        .track-artist {
+            font-size: 0.8rem;
+        }
+
+        .buttons {
+            font-size: 0.8rem;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .playpause-track,
+        .prev-track,
+        .next-track {
+            padding-left: 25px;
+            opacity: 0.8;
+            transition: opacity .2s;
+        }
+
+        .playpause-track:hover,
+        .prev-track:hover,
+        .next-track:hover {
+            opacity: 1.0;
+        }
+
+        .slider_container {
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Modify the appearance of the slider */
+        .seek_slider,
+        .volume_slider {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            height: 5px;
+            background: black;
+            opacity: 0.7;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+        }
+
+        /* Modify the appearance of the slider thumb */
+        .seek_slider::-webkit-slider-thumb,
+        .volume_slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            background: white;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .seek_slider:hover,
+        .volume_slider:hover {
+            opacity: 1.0;
+        }
+
+        .seek_slider {
+            width: 300px;
+        }
+
+        .volume_slider {
+            width: 200px;
+        }
+
+        .current-time,
+        .total-duration {
+            padding: 10px;
+        }
+
+        i.fa-volume-down,
+        i.fa-volume-up {
+            padding: 10px;
+        }
+
+        i.fa-play-circle,
+        i.fa-pause-circle,
+        i.fa-step-forward,
+        i.fa-step-backward {
+            cursor: pointer;
+        }
+
+        /* Responsiveness */
+        @media screen and (max-width: 850px) {
+            #main-content {
+                color: red;
+                margin-left: 5px;
+            }
+
+            #header-content img {
+                height: 33vh;
+            }
+
+            #releases-content>div {
+                width: 90%;
+            }
+
+            #image-1,
+            #image-3 {
+                width: 23%;
+                height: 23vh;
+            }
+
+            #image-2 {
+                width: 50%;
+            }
+
+            #pop-art-content {
+                justify-content: space-around;
+            }
+
+            .side-dropdown {
+                left: 45%;
+            }
+
+            .latest {
+                justify-content: space-around;
+            }
+
+            .volume-slider {
+                display: none;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            #image-2 {
+                width: 83%;
+                margin-left: 8%;
+                transform: scale(1);
+            }
+
+            #image-1,
+            #image-3 {
+                display: none;
+            }
+
+            #releases-content>div {
+                margin-left: 10px;
+                width: 90%;
+            }
+
+            #queue p {
+                margin-left: 12px;
+            }
+
+            .duration-slider {
+                width: 30%;
+            }
+
+
+        }
+
+        @media screen and (max-width: 500px) {
+            body {
+                width: 96%;
+            }
+
+            #fav {
+                display: none;
+            }
+
+            #main-content {
+                width: 87%;
+                margin-left: 5px;
+            }
+
+            #image-2 {
+                width: 100%;
+                margin-left: 10px;
+            }
+
+            #queue {
+                transition: height 0.3s linear, visibility 0.3s linear;
+                border: 1px solid white;
+                height: 0%;
+                top: 20%;
+                overflow: scroll;
+                background-color: black;
+                z-index: 3;
+                padding-left: 7px;
+                position: fixed;
+                left: 29%;
+                margin-left: 0px;
+                width: 60%;
+                text-align: center;
+                visibility: hidden;
+            }
+
+            aside>label {
+                display: block;
+                cursor: pointer;
+            }
+
+            aside>input:checked+#queue {
+                transition: height 0.3s linear, visibility 0.3s linear;
+                height: 65%;
+                visibility: visible;
+            }
+
+            .heart-icon {
+                left: 85%;
+            }
+
+            .side-dropdown .dropdown-content {
+                left: 10%;
+            }
+
+            #pop-art-content img {
+                margin: auto;
+                width: 100px;
+            }
+
+            #pop-art-content p {
+                font-size: 1rem;
+            }
+
+            #genres img {
+                height: 100px;
+                width: 100px;
+            }
+
+            #genres p {
+                font-size: 1rem;
+            }
+
+            .latest img {
+                height: 120px;
+                width: 120px;
+            }
+
+            .detail {
+                font-size: 0.8rem;
+            }
+
+            .duration-slider {
+                margin-left: -40%;
+            }
+
+            .details {
+                margin-left: 30%;
+            }
+
+            .buttons {
+                margin-left: -40%;
+            }
+
+        }
+
+        @media screen and (max-width: 400px) {
+            .player {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="navigation">
+        <div id="logo-container">
+            <div id="logo">
+                <img src="https://i.ibb.co/R2SXnBX/1.jpg">
+                <p><b>Ninja</b><br>Studios</p>
+            </div>
+        </div>
+        <div id="fav">
+            <p>Favourites</p>
+        </div>
+        <div id="search-bar">
+            <button type="submit"><i class="fas fa-search"></i></button>
+            <input type="text" name="search" placeholder="Search">
+        </div>
+        <div id="bell-icon">
+            <i class="fas fa-bell"></i>
+        </div>
+        <div id="profile">
+            <i class="fas fa-user-circle"></i>
+        </div>
+    </div>
+    <div id="main-content">
+        <div id="header-content">
+            <a href=""><img src="https://i.ibb.co/2KChNk1/2.jpg" id="image-1"></a>
+            <a href=""><img src="https://i.ibb.co/K5Z1TYz/1.jpg" id="image-2"></a>
+            <a href=""><img src="https://i.ibb.co/syGfB0V/3.jpg" id="image-3"></a>
+        </div>
+        <div id="releases">
+            <h1 class="heading">Latest Release</h1>
+            <div id="releases-content">
+                <div>
+                    <div class="img-container"><img src='https://i.ibb.co/sR7r0yx/1.jpg'>
+                        <div class="black-effect"><i class="fas fa-play"></i></div>
+                    </div>
+                    <div class="written-content">
+                        <p>
+                            <b>Better</b><br>
+                            Dec, 2020
+                        </p>
+
+                    </div>
+                    <div class="side-dropdown">
+                        <label for="check-1"><i class="fas fa-ellipsis-h"></i></label>
+                        <input type="checkbox" id="check-1">
+                        <div id="dropdown" class="dropdown-content">
+                            <a href=""><i class="fas fa-play"></i> Play Now</a>
+                            <a href=""><i class="fas fa-plus"></i> Add To Queue</a>
+                            <a href=""><i class="fas fa-star"></i> Add To Favourites</a>
+                            <a href=""><i class="fas fa-info-circle"></i> Get Info</a>
+                        </div>
+                    </div>
+
+                </div>
+                <div>
+                    <div class="img-container"><img src='https://i.ibb.co/sR7r0yx/1.jpg'>
+                        <div class="black-effect"><i class="fas fa-play"></i></div>
+                    </div>
+
+                    <div class="written-content">
+                        <p>
+                            <b>Better</b><br>
+                            Dec, 2020
+                        </p>
+                    </div>
+                    <div class="side-dropdown">
+                        <label for="check-2"><i class="fas fa-ellipsis-h"></i></label>
+                        <input type="checkbox" id="check-2">
+                        <div id="dropdown" class="dropdown-content">
+                            <a href=""><i class="fas fa-play"></i> Play Now</a>
+                            <a href=""><i class="fas fa-plus"></i> Add To Queue</a>
+                            <a href=""><i class="fas fa-star"></i> Add To Favourites</a>
+                            <a href=""><i class="fas fa-info-circle"></i> Get Info</a>
+                        </div>
+                    </div>
+
+                </div>
+                <div>
+                    <div class="img-container"><img src='https://i.ibb.co/sR7r0yx/1.jpg'>
+                        <div class="black-effect"><i class="fas fa-play"></i></div>
+                    </div>
+                    <div class="written-content">
+                        <p>
+                            <b>Better</b><br>
+                            Dec, 2020
+                        </p>
+                    </div>
+                    <div class="side-dropdown">
+                        <label for="check-3"><i class="fas fa-ellipsis-h"></i></label>
+                        <input type="checkbox" id="check-3">
+                        <div id="dropdown" class="dropdown-content">
+                            <a href=""><i class="fas fa-play"></i> Play Now</a>
+                            <a href=""><i class="fas fa-plus"></i> Add To Queue</a>
+                            <a href=""><i class="fas fa-star"></i> Add To Favourites</a>
+                            <a href=""><i class="fas fa-info-circle"></i> Get Info</a>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="img-container"><img src='https://i.ibb.co/sR7r0yx/1.jpg'>
+                        <div class="black-effect"><i class="fas fa-play"></i></div>
+                    </div>
+                    <div class="written-content">
+                        <p>
+                            <b>Better</b><br>
+                            Dec, 2020
+                        </p>
+                    </div>
+                    <div class="side-dropdown">
+                        <label for="check-4"><i class="fas fa-ellipsis-h"></i></label>
+                        <input type="checkbox" id="check-4">
+                        <div id="dropdown" class="dropdown-content">
+                            <a href=""><i class="fas fa-play"></i> Play Now</a>
+                            <a href=""><i class="fas fa-plus"></i> Add To Queue</a>
+                            <a href=""><i class="fas fa-star"></i> Add To Favourites</a>
+                            <a href=""><i class="fas fa-info-circle"></i> Get Info</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="popular-artists">
+            <h1 class="heading">Popular Artists</h1>
+            <div id="pop-art-content">
+                <div>
+                    <a href="second-page/second-page.html"><img src="https://i.ibb.co/bPgPXmV/1.jpg"></a>
+                    <p>Ed Sheeran</p>
+                </div>
+                <div>
+                    <a href="second-page/second-page.html"><img src="https://i.ibb.co/94XHrjr/2.jpg"></a>
+                    <p>Zayn Malik</p>
+                </div>
+                <div>
+                    <a href="second-page/second-page.html"><img src="https://i.ibb.co/4PWtNDr/3.jpg"></a>
+                    <p>Charlie Puth</p>
+                </div>
+                <div>
+                    <a href="second-page/second-page.html"><img src="https://i.ibb.co/31vkKFx/4.jpg"></a>
+                    <p>Imagine Dragons</p>
+                </div>
+                <div>
+                    <a href="second-page/second-page.html"><img src="https://i.ibb.co/CtYvgMF/5.jpg"></a>
+                    <p>Justin Beiber</p>
+                </div>
+                <div>
+                    <a href="second-page/second-page.html"><img src="https://i.ibb.co/7XzFL38/6.jpg"></a>
+                    <p>The Weekend</p>
+                </div>
+            </div>
+        </div>
+        <div id="genres">
+            <div id="main-genre">
+                <img src="https://i.ibb.co/R2SXnBX/1.jpg">
+            </div>
+            <div>
+                <a href=""><img src="https://i.ibb.co/wCVMZBr/Athletic-Men-Exercise-With-Weights.jpg"></a>
+                <p>Gym</p>
+            </div>
+            <div>
+                <a href=""><img src="https://i.ibb.co/gyNSSsq/3.jpg"></a>
+                <p>Rock</p>
+            </div>
+            <div>
+                <a href=""><img src="https://i.ibb.co/hVfs0hg/4.jpg"></a>
+                <p>Pop</p>
+            </div>
+            <div>
+                <a href=""><img src="https://i.ibb.co/cQdF6hK/5.jpg"></a>
+                <p>Chill</p>
+            </div>
+            <div>
+                <a href=""><img src="https://i.ibb.co/0KVbcjR/6.png"></a>
+                <p>Metal</p>
+            </div>
+            <div>
+                <a href=""><img src="https://i.ibb.co/syY8p3P/7.jpg"></a>
+                <p>Rap</p>
+            </div>
+        </div>
+        <div id="moods">
+            <div id="mood-1" class=moods-content>
+                <div class="effect">
+                    <p>Party</p>
+                </div>
+            </div>
+            <div id="mood-2" class=moods-content>
+                <div class="effect">
+                    <p>Electronic</p>
+                </div>
+            </div>
+            <div id="mood-3" class=moods-content>
+                <div class="effect">
+                    <p>Road Trip</p>
+                </div>
+            </div>
+        </div>
+        <div id="english-releases">
+            <h1 class="heading">Latest English</h1>
+            <div class="latest">
+                <div>
+                    <img src="https://i.ibb.co/1XPHVfK/1.jpg">
+                    <div class="detail">
+                        <h3>Rockstar</h3>
+                        <p>Dec, 2020</p>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://i.ibb.co/fnDCnHy/2.jpg">
+                    <div class="detail">
+                        <h3>Trampoline</h3>
+                        <p>Dec, 2020</p>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://i.ibb.co/SxJTdXL/3.jpg">
+                    <div class="detail">
+                        <h3>Blinding Lights</h3>
+                        <p>Dec, 2020</p>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://i.ibb.co/MBbCNZr/4.jpg">
+                    <div class="detail">
+                        <h3>Counting Stars</h3>
+                        <p>Dec, 2020</p>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://i.ibb.co/MfzHdp9/5.jpg">
+                    <div class="detail">
+                        <h3>Attention</h3>
+                        <p>Dec, 2020</p>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://i.ibb.co/58XRDRV/6.jpg">
+                    <div class="detail">
+                        <h3>W.D.T.A.</h3>
+                        <p>Dec, 2020</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="hindi-releases">
+            <h1 class="heading">Latest Hindi</h1>
+            <div class="latest">
+                <div>
+                    <img src="https://i.ibb.co/1XPHVfK/1.jpg">
+                    <div class="detail">
+                        <h3>Onism</h3>
+                        <p>Dec, 2020</p>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://i.ibb.co/fnDCnHy/2.jpg">
+                    <div class="detail">
+                        <h3>Onism</h3>
+                        <p>Dec, 2020</p>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://i.ibb.co/SxJTdXL/3.jpg">
+                    <div class="detail">
+                        <h3>Onism</h3>
+                        <p>Dec, 2020</p>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://i.ibb.co/MBbCNZr/4.jpg">
+                    <div class="detail">
+                        <h3>Onism</h3>
+                        <p>Dec, 2020</p>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://i.ibb.co/MfzHdp9/5.jpg">
+                    <div class="detail">
+                        <h3>Onism</h3>
+                        <p>Dec, 2020</p>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://i.ibb.co/58XRDRV/6.jpg">
+                    <div class="detail">
+                        <h3>Onism</h3>
+                        <p>Dec, 2020</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <aside>
+        <label for="side-button" class="side-button"><i class="far fa-caret-square-down"></i></label>
+        <input type="checkbox" id="side-button">
+
+        <div id="queue" class="aside">
+            <h1 id="queue-heading" class="heading">Queue
+                <div id="queue-button">
+                    <label for="btn"><i class="fas fa-angle-down"></i></label>
+                    <input type="checkbox" id="btn">
+                    <div id="queue-dropdown-content">
+                        <p>Playlists</p>
+                        <hr>
+                        <p>Favourite Songs</p>
+                    </div>
+                </div>
+            </h1>
+            <div>
+                <h3>01</h3>
+                <div class="side-image"><img src="https://i.ibb.co/1XPHVfK/1.jpg"></div>
+                <p><b>Rockstar</b><br>Post Malone</p>
+                <div class="heart-icon"><i class="far fa-heart"></i></div>
+            </div>
+            <div>
+                <h3>02</h3>
+                <div class="side-image"><img src="https://i.ibb.co/fnDCnHy/2.jpg"></div>
+                <p><b>Trampoline</b><br>Zayn Malik</p>
+                <div class="heart-icon"><i class="far fa-heart"></i></div>
+            </div>
+            <div>
+                <h3>03</h3>
+                <div class="side-image"><img src="https://i.ibb.co/SxJTdXL/3.jpg"></div>
+                <p><b>Blinding Lights</b><br>The Weekend</p>
+                <div class="heart-icon"><i class="far fa-heart"></i></div>
+            </div>
+            <div>
+                <h3>04</h3>
+                <div class="side-image"><img src="https://i.ibb.co/MBbCNZr/4.jpg"></div>
+                <p><b>Counting Stars</b><br>One Republic</p>
+                <div class="heart-icon"><i class="far fa-heart"></i></div>
+            </div>
+            <div>
+                <h3>05</h3>
+                <div class="side-image"><img src="https://i.ibb.co/MfzHdp9/5.jpg"></div>
+                <p><b>Attention</b><br>Charlie Puth</p>
+                <div class="heart-icon"><i class="far fa-heart"></i></div>
+            </div>
+            <div>
+                <h3>06</h3>
+                <div class="side-image"><img src="https://i.ibb.co/1XPHVfK/1.jpg"></div>
+                <p><b>Rockstar</b><br>Post Malone</p>
+                <div class="heart-icon"><i class="far fa-heart"></i></div>
+            </div>
+            <div>
+                <h3>07</h3>
+                <div class="side-image"><img src="https://i.ibb.co/fnDCnHy/2.jpg"></div>
+                <p><b>Trampoline</b><br>Zayn Malik</p>
+                <div class="heart-icon"><i class="far fa-heart"></i></div>
+            </div>
+            <div>
+                <h3>08</h3>
+                <div class="side-image"><img src="https://i.ibb.co/SxJTdXL/3.jpg"></div>
+                <p><b>Blinding Lights</b><br>The Weekend</p>
+                <div class="heart-icon"><i class="far fa-heart"></i></div>
+            </div>
+            <div>
+                <h3>09</h3>
+                <div class="side-image"><img src="https://i.ibb.co/MBbCNZr/4.jpg"></div>
+                <p><b>Counting Stars</b><br>One Republic</p>
+                <div class="heart-icon"><i class="far fa-heart"></i></div>
+            </div>
+            <div>
+                <h3>10</h3>
+                <div class="side-image"><img src="https://i.ibb.co/MfzHdp9/5.jpg"></div>
+                <p><b>Attention</b><br>Charlie Puth</p>
+                <div class="heart-icon"><i class="far fa-heart"></i></div>
+            </div>
+        </div>
+    </aside>
+
+</body>
+
+</html>
