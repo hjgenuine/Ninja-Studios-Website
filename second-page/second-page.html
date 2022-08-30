@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 2</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+        body {
+            background-color: #0f0f0f;
+            width: 100%;
+        }
+
+        .heading {
+            margin-left: 10px;
+            color: white;
+            font-family: 'Montserrat';
+            font-size: 1.5rem;
+        }
+
+        .main-heading {
+            color: white;
+            font-family: 'Montserrat';
+            font-size: 2rem;
+        }
+
+        /* Navigation */
+        #navigation {
+            margin-left: 2%;
+            height: 10vh;
+            width: 93%;
+            font-family: 'Montserrat';
+            font-size: 1rem;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #logo {
+            display: flex;
+            justify-content: space-around
+        }
+
+        #logo img {
+            margin-right: 10px;
+            height: 10vh;
+            border-radius: 50%;
+        }
+
+        #search-bar {
+            text-align: center;
+            width: 40%;
+        }
+
+        #search-bar button {
+            padding-bottom: 3.5px;
+            font-size: 1.3rem;
+            background: none;
+            color: white;
+            border: 0px;
+            margin-right: -5px;
+            background-color: #202020;
+            outline: none;
+        }
+
+        #search-bar button i {
+            position: relative;
+            top: 1.5px;
+        }
+
+        #search-bar button:hover {
+            cursor: pointer;
+        }
+
+        #search-bar input {
+            width: 60%;
+            background: none;
+            outline: none;
+            font-family: 'Montserrat';
+            cursor: text;
+            font-size: 1rem;
+            border: 0px;
+            background-color: #202020;
+            padding: 5px 10px;
+            color: white;
+        }
+
+        #fav {
+            width: 10%;
+            text-align: center;
+        }
+
+        #fav:hover {
+            cursor: pointer;
+        }
+
+        #bell-icon {
+            font-size: 1.4rem;
+            color: rgb(255, 208, 0);
+        }
+
+        #bell-icon:hover {
+            cursor: pointer;
+        }
+
+        #profile {
+            color: white;
+            font-size: 2rem;
+        }
+
+        #profile:hover {
+            cursor: pointer;
+        }
+
+        /* Main content */
+        #main-content {
+            display: inline-block;
+            margin-top: 2%;
+            margin-left: 3%;
+            width: 65%;
+        }
+
+        #content-header {
+            padding-right: 20px;
+            background-color: rgb(32, 32, 32);
+            height: 100%;
+            justify-content: space-between;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        #image-container {
+            height: 400px;
+            width: 400px;
+        }
+
+        #image-container img {
+            height: 100%;
+            width: 100%;
+        }
+
+        #written-content {
+            font-size: 1rem;
+            width: 50%;
+            font-family: 'Montserrat';
+            color: white;
+        }
+
+        #written-content button {
+            cursor: pointer;
+            background: none;
+            border: 0px;
+            font-size: 1.3rem;
+            font-family: 'Montserrat';
+            color: white;
+        }
+
+        #written-content #play-button {
+            background: black;
+            border: 2px solid white;
+            padding: 8px 20px;
+        }
+
+        #written-content #play-button:hover {
+            background: white;
+            color: black;
+        }
+
+        #written-content #follow-button:hover {
+            color: red;
+        }
+
+        /* Songs */
+        #songs {
+            margin-top: 30px;
+        }
+
+        #songs>div {
+            padding-top: 10px;
+            padding-bottom: 7px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            color: white;
+            position: relative;
+            margin-top: 10px;
+            flex-wrap: wrap;
+            background-color: rgb(32, 32, 32);
+        }
+
+        .side-image img {
+            height: 12vh;
+        }
+
+        #songs p {
+            font-family: 'Montserrat';
+            font-size: 0.9rem;
+            margin-left: 15px;
+        }
+
+        #songs h3 {
+            padding-left: 20px;
+            font-family: 'Montserrat';
+            font-size: 0.9rem;
+            margin-top: 15px;
+            margin-right: 15px;
+        }
+
+        .heart-icon {
+            position: absolute;
+            top: 40%;
+            right: 20%;
+        }
+
+        .plus-icon {
+            position: absolute;
+            top: 40%;
+            right: 10%;
+        }
+
+        .heart-icon:hover {
+            cursor: pointer;
+            color: red;
+        }
+
+        .plus-icon:hover {
+            cursor: pointer;
+            color: red;
+        }
+
+        /* Side-Section */
+        #side {
+            margin-top: 15px;
+            width: 25%;
+            vertical-align: top;
+            display: inline-block;
+            margin-left: 3%;
+        }
+
+        /* Similar Artists */
+        #similar-artists-content {
+            height: 480px;
+            overflow: scroll;
+        }
+
+        #similar-artists-content {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        #similar-artists-content img {
+            height: 120px;
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        #similar-artists-content>div {
+            position: relative;
+            width: 100%;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .img-container {
+            position: relative;
+        }
+
+        .img-container:hover .black-effect {
+            visibility: visible;
+        }
+
+        .black-effect {
+            display: flex;
+            visibility: hidden;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.521);
+        }
+
+        .black-effect i {
+            color: white;
+            font-size: 2rem;
+        }
+
+        .img-container:hover {
+            cursor: pointer;
+        }
+
+        .written-content {
+            color: white;
+            font-size: 1rem;
+            font-family: 'Montserrat';
+            position: relative;
+        }
+
+        .side-dropdown {
+            position: absolute;
+            z-index: 2;
+            top: 20px;
+            right: 5%;
+        }
+
+        .side-dropdown label,
+        .side-dropdown input {
+            cursor: pointer;
+            color: white;
+            margin-left: 88%;
+            margin-right: 5%
+        }
+
+        .side-dropdown input {
+            display: none;
+        }
+
+        .side-dropdown .dropdown-content {
+            background: black;
+            overflow: hidden;
+            transition: height 0.2s linear, visibility 0.2s linear;
+            width: 190px;
+            height: 0px;
+            border: 2px white solid;
+            padding: 5px;
+            color: white;
+            font-size: 1.1rem;
+            font-family: 'Montserrat';
+            visibility: hidden;
+        }
+
+        #dropdown a {
+            transition: all 0.2s linear;
+            color: white;
+            text-decoration: none;
+            padding: 2px;
+        }
+
+        .dropdown-content a {
+            display: block;
+            border-bottom: 2px solid white;
+        }
+
+        #check-1:checked+.dropdown-content {
+            transition: height 0.2s linear, visibility 0.2s linear;
+            height: 115px;
+            visibility: visible;
+        }
+
+        #check-2:checked+.dropdown-content {
+            transition: height 0.2s linear, visibility 0.2s linear;
+            height: 115px;
+            visibility: visible;
+        }
+
+        #check-3:checked+.dropdown-content {
+            transition: height 0.2s linear, visibility 0.2s linear;
+            height: 115px;
+            visibility: visible;
+        }
+
+        #check-4:checked+.dropdown-content {
+            transition: height 0.2s linear, visibility 0.2s linear;
+            height: 115px;
+            visibility: visible;
+        }
+
+        #dropdown a:hover {
+            transition: all 0.2s linear;
+            background-color: white;
+            color: rgb(0, 0, 0)
+        }
+
+        #artists-heading {
+            position: relative;
+        }
+
+        #more-button>label,
+        #queue-button>input {
+            color: greenyellow;
+            position: absolute;
+            right: 7.65%;
+            top: 0px;
+        }
+
+        #more-button>input {
+            display: none;
+        }
+
+        #more-button>label:hover {
+            cursor: pointer;
+        }
+
+        #more-dropdown-content {
+            transition: visibility 0.2s linear, height 0.2s linear;
+            overflow: hidden;
+            height: 0px;
+            visibility: hidden;
+            z-index: 3;
+            position: absolute;
+            width: 40%;
+            top: 35px;
+            border: 2px solid white;
+            background-color: black;
+            right: 6%;
+        }
+
+        #more-dropdown-content p {
+            font-size: 1rem;
+            padding: 3px;
+            margin: 5%;
+        }
+
+        #more-dropdown-content p:hover {
+            cursor: pointer;
+            background-color: white;
+            color: black;
+        }
+
+        #more-button>input:checked+#more-dropdown-content {
+            transition: visibility 0.2s linear, height 0.2s linear;
+            visibility: visible;
+            height: 100px;
+        }
+
+        /* width */
+        ::-webkit-scrollbar {
+            width: 0px;
+        }
+
+        /* Recently Played */
+        #queue-content {
+            height: 500px;
+            overflow: scroll;
+        }
+
+        #queue-content>div {
+            width: 95%;
+            margin-left: 6px;
+            display: flex;
+            color: white;
+            position: relative;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        #queue .side-image img {
+            height: 9vh;
+        }
+
+        #queue p {
+            font-family: 'Montserrat';
+            font-size: 0.85rem;
+            margin-left: 10px;
+        }
+
+        #queue h3 {
+            font-family: 'Montserrat';
+            font-size: 0.85rem;
+            margin-top: 25px;
+            margin-right: 10px;
+        }
+
+        #queue .heart-icon {
+            position: absolute;
+            top: 20%;
+            right: 5%;
+        }
+
+        #queue .heart-icon:hover {
+            cursor: pointer;
+            color: red;
+        }
+
+        #queue-content>div:hover {
+            cursor: pointer;
+            box-shadow: 0px 0px 10px 2px white;
+        }
+
+        /* Responsive button */
+        #recent>label,
+        #recent>input {
+            position: fixed;
+            color: white;
+            font-size: 1.3rem;
+            top: 16%;
+            left: 93%;
+            display: none;
+        }
+
+        /* Responsiveness */
+        @media screen and (max-width: 1270px) {
+            #written-content {
+                width: 40%;
+            }
+        }
+
+        @media screen and (max-width: 1050px) {
+            #written-content {
+                width: 35%;
+            }
+        }
+
+        @media screen and (max-width: 1000px) {
+            #main-content {
+                width: 90%;
+                margin-left: 2px;
+            }
+
+            #written-content {
+                width: 45%;
+            }
+
+            #queue {
+                transition: height 0.3s linear, visibility 0.3s linear;
+                border: 1px solid white;
+                height: 0%;
+                top: 20%;
+                overflow: scroll;
+                background-color: black;
+                z-index: 3;
+                padding-left: 7px;
+                position: fixed;
+                left: 29%;
+                margin-left: 0px;
+                width: 60%;
+                text-align: center;
+                visibility: hidden;
+            }
+
+            #recent>label {
+                display: block;
+                cursor: pointer;
+            }
+
+            #recent>input:checked+#queue {
+                transition: height 0.3s linear, visibility 0.3s linear;
+                height: 65%;
+                visibility: visible;
+            }
+
+            #similar-artists {
+                display: none;
+            }
+        }
+
+        @media screen and (max-width: 880px) {
+            #written-content {
+                width: 30%;
+                font-size: 0.9rem;
+            }
+
+            .heading {
+                font-size: 1.5rem;
+            }
+
+            #written-content #play-button,
+            #written-content #follow-button {
+                padding: 5px;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media screen and (max-width: 680px) {
+            #fav {
+                display: none;
+            }
+
+            #content-header {
+                flex-direction: column;
+                padding-left: 3%;
+                padding-bottom: 5px;
+            }
+
+            #image-container {
+                height: 360px;
+                width: 95%;
+            }
+
+            #image-container img {
+                height: 100%;
+                width: 100%;
+            }
+
+            .heading {
+                font-size: 2rem;
+            }
+
+            #written-content {
+                font-size: 0.95rem;
+                width: 95%;
+            }
+
+            #written-content #play-button,
+            #written-content #follow-button {
+                font-size: 1.3rem;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="navigation">
+        <div id="logo-container">
+            <div id="logo">
+                <img src="../images/genres/1.jpg">
+                <p><b>Ninja</b><br>Studios</p>
+            </div>
+        </div>
+        <div id="fav">
+            <p>Favourites</p>
+        </div>
+        <div id="search-bar">
+            <button type="submit"><i class="fas fa-search"></i></button>
+            <input type="text" name="search" placeholder="Search">
+        </div>
+        <div id="bell-icon">
+            <i class="fas fa-bell"></i>
+        </div>
+        <div id="profile">
+            <i class="fas fa-user-circle"></i>
+        </div>
+    </div>
+    <div id="main-content">
+        <div id="content-header">
+            <div id="image-container"><img src="../images/Zayn-Malik.jpg"></div>
+            <div id="written-content">
+                <h1 class="main-heading">Zayn Malik</h1>
+                <p>Singer-songwriter</p>
+                <p>Zain Javadd Malik, known mononymously as Zayn, is an English singer and songwriter. Born and raised
+                    in Bradford, Malik auditioned as a solo contestant for the British music competition The X Factor in
+                    2010. After being eliminated as a solo performer, Malik was brought back into the competition, along
+                    with four other contestants, to form the boy band One Direction. Malik left the group in March 2015
+                    and subsequently signed a solo recording contract with RCA Records</p>
+                <button type="button" id="play-button">Play All</button>
+                <button type="button" id="follow-button">Follow</button>
+                <p>24x7 Tracks | 128 Albums</p>
+            </div>
+        </div>
+        <div id="songs" class="aside">
+            <div>
+                <h3>01</h3>
+                <div class="side-image"><img src="../images/latest/1.jpg"></div>
+                <p><b>Rockstar</b><br>Post Malone</p>
+                <div class="heart-icon"><i class="far fa-heart"></i></div>
+                <div class="plus-icon"><i class="fas fa-plus"></i></div>
+            </div>
+            <div>
+                <h3>02</h3>
+                <div class="side-image"><img src="../images/latest/2.jpg"></div>
+                <p><b>Trampoline</b><br>Zayn Malik</p>
+                <div class="heart-icon"><i class="far fa-heart"></i></div>
+                <div class="plus-icon"><i class="fas fa-plus"></i></div>
+            </div>
+            <div>
+                <h3>03</h3>
+                <div class="side-image"><img src="../images/latest/3.jpg"></div>
+                <p><b>Blinding Lights</b><br>The Weekend</p>
+                <div class="heart-icon"><i class="far fa-heart"></i></div>
+                <div class="plus-icon"><i class="fas fa-plus"></i></div>
+            </div>
+            <div>
+                <h3>04</h3>
+                <div class="side-image"><img src="../images/latest/4.jpg"></div>
+                <p><b>Counting Stars</b><br>One Republic</p>
+                <div class="heart-icon"><i class="far fa-heart"></i></div>
+                <div class="plus-icon"><i class="fas fa-plus"></i></div>
+            </div>
+            <div>
+                <h3>05</h3>
+                <div class="side-image"><img src="../images/latest/5.jpg"></div>
+                <p><b>Attention</b><br>Charlie Puth</p>
+                <div class="heart-icon"><i class="far fa-heart"></i></div>
+                <div class="plus-icon"><i class="fas fa-plus"></i></div>
+            </div>
+            <div>
+                <h3>06</h3>
+                <div class="side-image"><img src="../images/latest/1.jpg"></div>
+                <p><b>Rockstar</b><br>Post Malone</p>
+                <div class="heart-icon"><i class="far fa-heart"></i></div>
+                <div class="plus-icon"><i class="fas fa-plus"></i></div>
+            </div>
+            <div>
+                <h3>07</h3>
+                <div class="side-image"><img src="../images/latest/2.jpg"></div>
+                <p><b>Trampoline</b><br>Zayn Malik</p>
+                <div class="heart-icon"><i class="far fa-heart"></i></div>
+                <div class="plus-icon"><i class="fas fa-plus"></i></div>
+            </div>
+            <div>
+                <h3>08</h3>
+                <div class="side-image"><img src="../images/latest/3.jpg"></div>
+                <p><b>Blinding Lights</b><br>The Weekend</p>
+                <div class="heart-icon"><i class="far fa-heart"></i></div>
+                <div class="plus-icon"><i class="fas fa-plus"></i></div>
+            </div>
+            <div>
+                <h3>09</h3>
+                <div class="side-image"><img src="../images/latest/4.jpg"></div>
+                <p><b>Counting Stars</b><br>One Republic</p>
+                <div class="heart-icon"><i class="far fa-heart"></i></div>
+                <div class="plus-icon"><i class="fas fa-plus"></i></div>
+            </div>
+            <div>
+                <h3>10</h3>
+                <div class="side-image"><img src="../images/latest/5.jpg"></div>
+                <p><b>Attention</b><br>Charlie Puth</p>
+                <div class="heart-icon"><i class="far fa-heart"></i></div>
+                <div class="plus-icon"><i class="fas fa-plus"></i></div>
+            </div>
+            <div>
+                <h3>11</h3>
+                <div class="side-image"><img src="../images/latest/1.jpg"></div>
+                <p><b>Rockstar</b><br>Post Malone</p>
+                <div class="heart-icon"><i class="far fa-heart"></i></div>
+                <div class="plus-icon"><i class="fas fa-plus"></i></div>
+            </div>
+            <div>
+                <h3>12</h3>
+                <div class="side-image"><img src="../images/latest/2.jpg"></div>
+                <p><b>Trampoline</b><br>Zayn Malik</p>
+                <div class="heart-icon"><i class="far fa-heart"></i></div>
+                <div class="plus-icon"><i class="fas fa-plus"></i></div>
+            </div>
+            <div>
+                <h3>13</h3>
+                <div class="side-image"><img src="../images/latest/3.jpg"></div>
+                <p><b>Blinding Lights</b><br>The Weekend</p>
+                <div class="heart-icon"><i class="far fa-heart"></i></div>
+                <div class="plus-icon"><i class="fas fa-plus"></i></div>
+            </div>
+            <div>
+                <h3>14</h3>
+                <div class="side-image"><img src="../images/latest/4.jpg"></div>
+                <p><b>Counting Stars</b><br>One Republic</p>
+                <div class="heart-icon"><i class="far fa-heart"></i></div>
+                <div class="plus-icon"><i class="fas fa-plus"></i></div>
+            </div>
+            <div>
+                <h3>15</h3>
+                <div class="side-image"><img src="../images/latest/5.jpg"></div>
+                <p><b>Attention</b><br>Charlie Puth</p>
+                <div class="heart-icon"><i class="far fa-heart"></i></div>
+                <div class="plus-icon"><i class="fas fa-plus"></i></div>
+            </div>
+            <div>
+                <h3>16</h3>
+                <div class="side-image"><img src="../images/latest/1.jpg"></div>
+                <p><b>Rockstar</b><br>Post Malone</p>
+                <div class="heart-icon"><i class="far fa-heart"></i></div>
+                <div class="plus-icon"><i class="fas fa-plus"></i></div>
+            </div>
+            <div>
+                <h3>17</h3>
+                <div class="side-image"><img src="../images/latest/2.jpg"></div>
+                <p><b>Trampoline</b><br>Zayn Malik</p>
+                <div class="heart-icon"><i class="far fa-heart"></i></div>
+                <div class="plus-icon"><i class="fas fa-plus"></i></div>
+            </div>
+            <div>
+                <h3>18</h3>
+                <div class="side-image"><img src="../images/latest/3.jpg"></div>
+                <p><b>Blinding Lights</b><br>The Weekend</p>
+                <div class="heart-icon"><i class="far fa-heart"></i></div>
+                <div class="plus-icon"><i class="fas fa-plus"></i></div>
+            </div>
+            <div>
+                <h3>19</h3>
+                <div class="side-image"><img src="../images/latest/4.jpg"></div>
+                <p><b>Counting Stars</b><br>One Republic</p>
+                <div class="heart-icon"><i class="far fa-heart"></i></div>
+                <div class="plus-icon"><i class="fas fa-plus"></i></div>
+            </div>
+            <div>
+                <h3>20</h3>
+                <div class="side-image"><img src="../images/latest/5.jpg"></div>
+                <p><b>Attention</b><br>Charlie Puth</p>
+                <div class="heart-icon"><i class="far fa-heart"></i></div>
+                <div class="plus-icon"><i class="fas fa-plus"></i></div>
+            </div>
+        </div>
+    </div>
+    <div id="side">
+        <section>
+            <div id="similar-artists">
+                <h1 class="heading" id="artists-heading">Similar Artists
+                    <div id="more-button">
+                        <label for="btn"><i class="fas fa-angle-down"></i></label>
+                        <input type="checkbox" id="btn">
+                        <div id="more-dropdown-content">
+                            <p>Playlists</p>
+                            <hr>
+                            <p>Favourite Songs</p>
+                        </div>
+                    </div>
+                </h1>
+                <div id="similar-artists-content">
+                    <div>
+                        <div class="img-container"><img src='../images/popular-artists/4.jpg'>
+                            <div class="black-effect"><i class="fas fa-play"></i></div>
+                        </div>
+                        <div class="written-content">
+                            <p>
+                                <b>Imagine Dragons</b><br>
+                                POP Band
+                            </p>
+                        </div>
+                        <div class="side-dropdown">
+                            <label for="check-1"><i class="fas fa-ellipsis-h"></i></label>
+                            <input type="checkbox" id="check-1">
+                            <div id="dropdown" class="dropdown-content">
+                                <a href=""><i class="fas fa-play"></i> Play Now</a>
+                                <a href=""><i class="fas fa-plus"></i> Add To Queue</a>
+                                <a href=""><i class="fas fa-star"></i> Add To Favourites</a>
+                                <a href=""><i class="fas fa-info-circle"></i> Get Info</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="img-container"><img src='../images/popular-artists/5.jpg'>
+                            <div class="black-effect"><i class="fas fa-play"></i></div>
+                        </div>
+
+                        <div class="written-content">
+                            <p>
+                                <b>Justin Bieber</b><br>
+                                Singer
+                            </p>
+                        </div>
+                        <div class="side-dropdown">
+                            <label for="check-2"><i class="fas fa-ellipsis-h"></i></label>
+                            <input type="checkbox" id="check-2">
+                            <div id="dropdown" class="dropdown-content">
+                                <a href=""><i class="fas fa-play"></i> Play Now</a>
+                                <a href=""><i class="fas fa-plus"></i> Add To Queue</a>
+                                <a href=""><i class="fas fa-star"></i> Add To Favourites</a>
+                                <a href=""><i class="fas fa-info-circle"></i> Get Info</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="img-container"><img src='../images/header/3.jpg'>
+                            <div class="black-effect"><i class="fas fa-play"></i></div>
+                        </div>
+
+                        <div class="written-content">
+                            <p>
+                                <b>Weekend</b><br>
+                                Singer
+                            </p>
+                        </div>
+                        <div class="side-dropdown">
+                            <label for="check-3"><i class="fas fa-ellipsis-h"></i></label>
+                            <input type="checkbox" id="check-3">
+                            <div id="dropdown" class="dropdown-content">
+                                <a href=""><i class="fas fa-play"></i> Play Now</a>
+                                <a href=""><i class="fas fa-plus"></i> Add To Queue</a>
+                                <a href=""><i class="fas fa-star"></i> Add To Favourites</a>
+                                <a href=""><i class="fas fa-info-circle"></i> Get Info</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="img-container"><img src='../images/popular-artists/3.jpg'>
+                            <div class="black-effect"><i class="fas fa-play"></i></div>
+                        </div>
+
+                        <div class="written-content">
+                            <p>
+                                <b>Chalie Puth</b><br>
+                                Singer
+                            </p>
+                        </div>
+                        <div class="side-dropdown">
+                            <label for="check-4"><i class="fas fa-ellipsis-h"></i></label>
+                            <input type="checkbox" id="check-4">
+                            <div id="dropdown" class="dropdown-content">
+                                <a href=""><i class="fas fa-play"></i> Play Now</a>
+                                <a href=""><i class="fas fa-plus"></i> Add To Queue</a>
+                                <a href=""><i class="fas fa-star"></i> Add To Favourites</a>
+                                <a href=""><i class="fas fa-info-circle"></i> Get Info</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div id="recent">
+            <label for="side-button" class="side-button"><i class="far fa-caret-square-down"></i></label>
+            <input type="checkbox" id="side-button">
+            <div id="queue" class="aside">
+                <h1 class="heading">Recently Played</h1>
+                <div id="queue-content">
+                    <div>
+                        <h3>01</h3>
+                        <div class="side-image"><img src="../images/latest/1.jpg"></div>
+                        <p><b>Rockstar</b><br>Post Malone</p>
+                        <div class="heart-icon"><i class="far fa-heart"></i></div>
+                    </div>
+                    <div>
+                        <h3>02</h3>
+                        <div class="side-image"><img src="../images/latest/2.jpg"></div>
+                        <p><b>Trampoline</b><br>Zayn Malik</p>
+                        <div class="heart-icon"><i class="far fa-heart"></i></div>
+                    </div>
+                    <div>
+                        <h3>03</h3>
+                        <div class="side-image"><img src="../images/latest/3.jpg"></div>
+                        <p><b>Blinding Lights</b><br>The Weekend</p>
+                        <div class="heart-icon"><i class="far fa-heart"></i></div>
+                    </div>
+                    <div>
+                        <h3>04</h3>
+                        <div class="side-image"><img src="../images/latest/4.jpg"></div>
+                        <p><b>Counting Stars</b><br>One Republic</p>
+                        <div class="heart-icon"><i class="far fa-heart"></i></div>
+                    </div>
+                    <div>
+                        <h3>05</h3>
+                        <div class="side-image"><img src="../images/latest/5.jpg"></div>
+                        <p><b>Attention</b><br>Charlie Puth</p>
+                        <div class="heart-icon"><i class="far fa-heart"></i></div>
+                    </div>
+                    <div>
+                        <h3>06</h3>
+                        <div class="side-image"><img src="../images/latest/1.jpg"></div>
+                        <p><b>Rockstar</b><br>Post Malone</p>
+                        <div class="heart-icon"><i class="far fa-heart"></i></div>
+                    </div>
+                    <div>
+                        <h3>07</h3>
+                        <div class="side-image"><img src="../images/latest/2.jpg"></div>
+                        <p><b>Trampoline</b><br>Zayn Malik</p>
+                        <div class="heart-icon"><i class="far fa-heart"></i></div>
+                    </div>
+                    <div>
+                        <h3>08</h3>
+                        <div class="side-image"><img src="../images/latest/3.jpg"></div>
+                        <p><b>Blinding Lights</b><br>The Weekend</p>
+                        <div class="heart-icon"><i class="far fa-heart"></i></div>
+                    </div>
+                    <div>
+                        <h3>09</h3>
+                        <div class="side-image"><img src="../images/latest/4.jpg"></div>
+                        <p><b>Counting Stars</b><br>One Republic</p>
+                        <div class="heart-icon"><i class="far fa-heart"></i></div>
+                    </div>
+                    <div>
+                        <h3>10</h3>
+                        <div class="side-image"><img src="../images/latest/5.jpg"></div>
+                        <p><b>Attention</b><br>Charlie Puth</p>
+                        <div class="heart-icon"><i class="far fa-heart"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
